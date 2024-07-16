@@ -7,6 +7,6 @@ export const homeRoutes: Routes = [
     },
     {
         path: 'form',
-        loadChildren: () => import('../form-apps/form.routes').then(m => m.listRoutes)
+        loadChildren: () => import('../form-apps/form.routes').then(m => m.FormRoutes)
     }
 ];
