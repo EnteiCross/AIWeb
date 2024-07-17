@@ -2,3 +2,15 @@
     background-color: #0d6efd;
     color: #fff;
 }
+
+.icon-pos{
+    vertical-align: middle;
+}
+
+.icon-del{
+    color: red;
+}
+
+.icon-down{
+    color: green
+}

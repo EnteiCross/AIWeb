@@ -1,5 +1,5 @@
 export interface Aplication {
-    id:   string;
+    id:   number;
     name: string;
     status: string;
 }
