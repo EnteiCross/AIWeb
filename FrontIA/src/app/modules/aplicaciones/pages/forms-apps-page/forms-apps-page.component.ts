@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-form-apps',
+  selector: 'forms-apps-page',
   standalone: true,
   imports: [],
-  templateUrl: './form-apps.component.html',
-  styleUrl: './form-apps.component.css'
+  templateUrl: './forms-apps-page.component.html',
+  styleUrl: './forms-apps-page.component.css'
 })
-export class FormAppsComponent {
+export class FormsAppsPageComponent {
   pdfFile: File | null = null;
   zipFile: File | null = null;
 

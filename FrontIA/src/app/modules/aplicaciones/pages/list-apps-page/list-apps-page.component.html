@@ -1,0 +1,37 @@
+<title-list
+    [titleText]="'Lista de Aplicaciones'"
+    [bntLabel]="'Nueva'"/>
+
+<main class="container mt-3">
+    <table class="table mt-4">
+        <thead class="table-bg">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col" class="text-center">Nombre</th>
+                <th scope="col">Estatus</th>
+                <th scope="col" class="text-center">Acciones</th>
+            </tr>
+        </thead>
+        <tbody class="align-middle">
+            <tr>
+                <td>192</td>
+                <td>web basico.php</td>
+                <td>En proceso</td>
+                <td class="text-nowrap text-center">
+                    <a  (click)="onEdit(192)"
+                        class="c-pointer mx-1">
+                       <span class="material-icons icon-pos">edit</span>
+                    </a>
+                    <a  (click)="onDelete(192)"
+                        class="c-pointer mx-1">
+                        <span class="material-icons icon-pos icon-del">delete</span>
+                    </a>
+                    <a 
+                        class="c-pointer mx-1">
+                        <span class="material-icons icon-pos icon-down">download</span>
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</main>

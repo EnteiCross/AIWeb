@@ -1,10 +1,17 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './modules/home/page/home.component';
 
 export const routes: Routes = [
     {
-        path: '',
-        component: HomeComponent,
-        loadChildren: () => import('../app/modules/home/home.routes').then(m => m.homeRoutes)
+        path: 'apps',
+        loadChildren: () => import('@modules/aplicaciones/apps.routes').then(m => m.appsRoutes)
     },
+    {
+        path: '',
+        redirectTo: 'apps',
+        pathMatch: 'full'
+    },
+    {
+        path: '**',
+        redirectTo: 'apps'
+    }
 ];

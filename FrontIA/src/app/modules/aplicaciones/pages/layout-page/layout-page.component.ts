@@ -2,12 +2,12 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
-  selector: 'app-home',
+  selector: 'app-layout-page',
   standalone: true,
   imports: [RouterOutlet],
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.css'
+  templateUrl: './layout-page.component.html',
+  styleUrl: './layout-page.component.css'
 })
-export class HomeComponent {
+export class LayoutPageComponent {
 
 }
