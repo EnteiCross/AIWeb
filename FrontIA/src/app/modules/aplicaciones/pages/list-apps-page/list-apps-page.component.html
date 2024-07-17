@@ -1,32 +1,46 @@
 <title-list
     [titleText]="'Lista de Aplicaciones'"
-    [bntLabel]="'Nueva'"/>
+    [btnLabel]="'Nueva'"
+    [btnRoute]="'/apps/new-app'"/>
 
-<main class="container mt-3">
-    <table class="table mt-4">
+<ng-template #loader>
+    <div class="container d-flex justify-content-center mt-5">
+        <h3>Cargando ...</h3>
+    </div>
+</ng-template>
+
+
+<main *ngIf="!isLoadingData; else loader"  class="container">
+    <table class="table mt-2">
         <thead class="table-bg">
             <tr>
-                <th scope="col">ID</th>
+                <th scope="col" class="text-center">ID</th>
                 <th scope="col" class="text-center">Nombre</th>
                 <th scope="col">Estatus</th>
-                <th scope="col" class="text-center">Acciones</th>
+                <th scope="col" class="text-center col-actions">Acciones</th>
             </tr>
         </thead>
         <tbody class="align-middle">
-            <tr>
-                <td>192</td>
-                <td>web basico.php</td>
-                <td>En proceso</td>
-                <td class="text-nowrap text-center">
-                    <a  (click)="onEdit(192)"
+            <tr *ngFor="let app of aplications; let i = index; trackBy: trackByFn"
+                [ngClass]="{'deleting': isDeleting && app.id === idToDelete}">
+                <td class="text-center">{{ app.id }}</td>
+                <td>{{ app.name }}</td>
+                <td>{{ app.status }}</td>
+                <td class="text-nowrap ">
+                    <a (click)="onEdit(app.id)"
                         class="c-pointer mx-1">
                        <span class="material-icons icon-pos">edit</span>
                     </a>
-                    <a  (click)="onDelete(192)"
+                    <a  
+                        (click)="onSetDelete(app.id,app.name)"
+                        data-bs-toggle="modal" data-bs-target="#staticBackdrop"
                         class="c-pointer mx-1">
                         <span class="material-icons icon-pos icon-del">delete</span>
                     </a>
                     <a 
+                        *ngIf="app.status === statusOpc.DONE"
+                        [href]="app.linkDownload"
+                        download="{{ app.name }}.jpeg"
                         class="c-pointer mx-1">
                         <span class="material-icons icon-pos icon-down">download</span>
                     </a>
@@ -35,3 +49,11 @@
         </tbody>
     </table>
 </main>
+
+
+<modal-confirmation 
+    modalTitle="¿Eliminar aplicación?"
+    [modalBodyText]="modalBodyText"
+    modalCloseBtnText="No, regresar"
+    modalConfirmBtnText="Si, eliminar"
+    (onConfirm)="onDelete($event)"/>

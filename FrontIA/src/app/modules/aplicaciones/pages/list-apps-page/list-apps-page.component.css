@@ -14,3 +14,22 @@
 .icon-down{
     color: green
 }
+
+.col-actions{
+    width: 20%;
+}
+
+.deleting{
+    opacity: 50%;
+    cursor: progress;
+}
+
+.deleting a{
+    pointer-events: none;
+}
+    
+
+.disable-action{
+    opacity: 50%;
+    cursor: not-allowed;
+}
