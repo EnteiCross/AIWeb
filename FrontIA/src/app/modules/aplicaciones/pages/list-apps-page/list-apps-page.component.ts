@@ -5,11 +5,12 @@ import { TitleListComponent } from '@modules/shared/components/title-list/title-
 import { AplicacionService } from '@modules/aplicaciones/services/aplicacion.service';
 import { NgClass, NgFor, NgIf } from '@angular/common';
 import { ModalConfirmationComponent } from "../../../shared/components/modal-confirmation/modal-confirmation.component";
+import { PaginatorComponent } from '@modules/shared/componentes/paginator/paginator.component';
 
 @Component({
   selector: 'app-list-apps-page',
   standalone: true,
-  imports: [TitleListComponent, NgIf, NgFor, ModalConfirmationComponent,NgClass],
+  imports: [TitleListComponent, NgIf, NgFor, ModalConfirmationComponent,NgClass, PaginatorComponent],
   templateUrl: './list-apps-page.component.html',
   styleUrl: './list-apps-page.component.css'
 })
@@ -19,6 +20,8 @@ export class ListAppsPageComponent {
   modalBodyText: string = '';
   isDeleting: boolean = false;
   idToDelete: number = -1;
+  currentPage: number = 1
+  totalItems: number = 0
 
   statusOpc = {
     DONE: StatusApps.DONE,
@@ -35,10 +38,11 @@ export class ListAppsPageComponent {
   }
 
   onGetAplicaciones(): void {
-    this.aplicacionService.getAplicaciones()
-    .subscribe( apps => {
-      console.log(apps)
-      this.aplications = apps;
+    this.aplicacionService.getAplicaciones(this.currentPage)
+    .subscribe(({data,total}) => {
+      console.log({data,total})
+      this.aplications = data;
+      this.totalItems = total;
       this.isLoadingData = false;
     })
   }
@@ -66,4 +70,10 @@ export class ListAppsPageComponent {
     return `${aplicacion.id}`
   }
 
+  onPageChange(newPage: number): void {
+    if(newPage === this.currentPage) return;
+    this.currentPage = newPage;
+    this.onGetAplicaciones();
+    
+  }
 }

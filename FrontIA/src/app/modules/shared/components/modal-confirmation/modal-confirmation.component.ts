@@ -14,7 +14,7 @@ export class ModalConfirmationComponent {
   @Input() modalCloseBtnText: string = 'Close';
   @Input() modalConfirmBtnText: string = 'Ok';
 
-  @Output() onConfirm: EventEmitter<string> = new EventEmitter();
+  @Output() onConfirm = new EventEmitter<string>();
 
   onDelete(): void {
     const values = this.modalBodyText.split('-');

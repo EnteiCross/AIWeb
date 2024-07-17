@@ -9,3 +9,9 @@ export enum StatusApps {
     DONE = 'Finalizado',
     PROGRESS = 'En Proceso'
 }
+
+
+export interface GetAplicacionesResponse {
+    data: Aplication[];
+    total: number;
+}
