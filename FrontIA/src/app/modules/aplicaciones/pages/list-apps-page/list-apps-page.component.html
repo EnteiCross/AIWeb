@@ -1,0 +1,46 @@
+<h1>Listado</h1>
+
+<main class="container mt-3">
+    <table class="table mt-4">
+        <thead class="table-bg">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Estatus</th>
+                <th scope="col" class="text-center">Acciones</th>
+            </tr>
+        </thead>
+        <tbody class="align-middle">
+            <tr>
+                <td>192</td>
+                <td>web basico.php</td>
+                <td>En proceso</td>
+                <td class="text-nowrap text-center">
+                    <a  (click)="onEdit(192)"
+                        class="c-pointer">
+                       <span class="material-icons">edit</span>
+                    </a>
+                    <a  (click)="onDelete(192)"
+                        class="c-pointer">
+                        <span class="material-icons">delete</span>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>193</td>
+                <td>otronombre.php</td>
+                <td>Finalizado</td>
+                <td class="text-nowrap text-center">
+                    <a  (click)="onEdit(193)"
+                        class="c-pointer">
+                       <span class="material-icons">edit</span>
+                    </a>
+                    <a  (click)="onDelete(193)"
+                        class="c-pointer">
+                        <span class="material-icons">delete</span>
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</main>
