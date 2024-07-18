@@ -56,6 +56,7 @@ export class PaginatorComponent implements OnInit {
 
   navigatePage(page: number | string): void {
     if(page === '...' || page === this.currentPage) return;
+    if(+page <= 0 || +page > this.totalPages ) return;
     this.currentPage = +page;
     this.pageChanged.emit(this.currentPage)
   }

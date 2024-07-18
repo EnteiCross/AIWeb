@@ -1,16 +1,13 @@
-.table-bg tr > th{
-    /* background-color: #0d6efd; */
-    /* color: #fff; */
-}
-
-.col-actions{
-    width: 20%;
-}
-
 .icon-pos{
     vertical-align: middle;
 }
 
 .icon-down{
-    color: green
+    font-size: 30px;
+    color: #7ED957;
+    transition: background-color 0.2s ease;
+}
+
+.icon-down:hover{
+    color: #008000;
 }

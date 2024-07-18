@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import { NgIf } from '@angular/common';
 
 import { TitleListComponent } from '@modules/shared/components/title-list/title-list.component';
-import { AplicacionService } from '@modules/aplicaciones/services/aplicacion.service';
-import { UserLogged } from '@modules/aplicaciones/interfaces/auth.interfaces';
 import { ListAppsComponent } from "./components/list-apps/list-apps.component";
+import { AuthService } from '@modules/auth/services/auth.service';
+import { UserLogged } from '@modules/auth/interfaces/userLogged.interface';
 
 
 @Component({
@@ -18,9 +18,9 @@ export class ListAppsPageComponent {
 
   user!: UserLogged
   
-  constructor(private aplicacionService: AplicacionService){}
+  constructor(private authService: AuthService){}
   
   ngOnInit(): void {
-    this.user = this.aplicacionService.userLogged;
+    this.user = this.authService.userLogged;
   }
 }

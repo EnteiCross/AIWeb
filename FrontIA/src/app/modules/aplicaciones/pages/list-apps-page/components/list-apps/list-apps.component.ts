@@ -5,10 +5,11 @@ import { Aplication, OpcsStatus } from '@modules/aplicaciones/interfaces/aplicac
 import { AplicacionService } from '@modules/aplicaciones/services/aplicacion.service';
 import { PaginatorComponent } from '@modules/shared/components/paginator/paginator.component';
 import { ModalConfirmationComponent } from '@modules/shared/components/modal-confirmation/modal-confirmation.component';
-import { UserLogged } from '@modules/aplicaciones/interfaces/auth.interfaces';
 
 import { SelectListComponent } from "../select-list/select-list.component";
 import { StatusPipe } from '../../pipes/status.pipe';
+import { AuthService } from '@modules/auth/services/auth.service';
+import { UserLogged } from '@modules/auth/interfaces/userLogged.interface';
 
 @Component({
   selector: 'list-apps',
@@ -34,10 +35,12 @@ export class ListAppsComponent {
       firstValue: -1
   };
   
-  constructor(private aplicacionService: AplicacionService){}
+  constructor(
+      private aplicacionService: AplicacionService,
+      private authService: AuthService ){}
 
   ngOnInit(): void {
-    this.user = this.aplicacionService.userLogged;
+    this.user = this.authService.userLogged;
     this.onGetAplicaciones();
   }
 

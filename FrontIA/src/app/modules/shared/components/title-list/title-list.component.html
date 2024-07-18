@@ -3,9 +3,9 @@
         {{ titleText }}
     </h1>
     <a 
-        *ngIf="user.rol !== 'Invitado'"
+        *ngIf="user.rol !== 'Invitado' && showBtn"
         [routerLink]="btnRoute"
-        class="btn btn-primary btn-lg  mb-0 mt-auto">
+        class="btn btn-lg  mb-0 mt-auto btn-new">
         <span class="material-icons m-0 icon-pos">add_circle</span>
         {{ btnLabel }}
     </a>
