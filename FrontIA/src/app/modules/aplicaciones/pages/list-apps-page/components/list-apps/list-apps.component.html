@@ -1,6 +1,6 @@
-<main class="container">
+<main class="container container-bg mt-2">
     <table class="table mt-2">
-        <thead class="table-bg">
+        <thead class="table-header table-thead-border">
             <tr>
                 <th scope="col" class="text-center">ID</th>
                 <th scope="col" class="text-center">Nombre</th>
@@ -9,7 +9,7 @@
                 <th *ngIf="user.rol !== 'Invitado'" scope="col" class="text-center col-actions">Acciones</th>
             </tr>
         </thead>
-        <tbody class="align-middle">
+        <tbody class="table-body align-middle">
             <tr *ngFor="let app of aplications; let i = index; trackBy: trackByFn">
                 <td class="text-center">{{ app.id }}</td>
                 <td>{{ app.name }}</td>
@@ -35,10 +35,10 @@
             </tr>
         </tbody>
     </table>
-    <paginator
-        [totalItems]="totalItems"
-        (pageChanged)="onPageChange($event)"/>
 </main>
+<paginator
+    [totalItems]="totalItems"
+    (pageChanged)="onPageChange($event)"/>
 
 <a #btnModal data-bs-toggle="modal" data-bs-target="#staticBackdrop"></a>
 <modal-confirmation
