@@ -1,6 +1,8 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';  // Importa el servicio Router
+import { AuthService } from '../../services/auth.service';  // Importa el AuthService
 
 @Component({
   selector: 'app-login',
@@ -10,35 +12,28 @@ import { FormsModule } from '@angular/forms';
   imports: [CommonModule, FormsModule]
 })
 export class LoginComponent {
-  email: string = '';
+  usernumber: string = '';
   password: string = '';
   errorMessage: string = '';
 
   @ViewChild('passwordInput', { static: false }) passwordInput!: ElementRef;
 
-  // Credenciales de ejemplo para autenticación simulada
-  validEmail: string = 'usuario@coppel.com';
-  validPassword: string = '12345';
+  constructor(private authService: AuthService, private router: Router) {}  // Inyecta el servicio Router y AuthService
 
   onLogin(): void {
-    // Convertir a minúsculas para evitar problemas de mayúsculas y minúsculas
-    const trimmedEmail = this.email.trim().toLowerCase();
+    const trimmedUsernumber = this.usernumber.trim();
     const trimmedPassword = this.password.trim();
 
-    // Debugging: Verificar valores
-    console.log(`Ingresado: ${trimmedEmail}, Esperado: ${this.validEmail}`);
-    console.log(`Ingresado password: ${trimmedPassword}, Esperado password: ${this.validPassword}`);
+    const users = this.authService.getUsers();
+    const user = users.find(u => u.usernumber === trimmedUsernumber && u.password === trimmedPassword);
 
-    if (trimmedEmail === this.validEmail) {
-      if (trimmedPassword === this.validPassword) {
-        console.log('Autenticación exitosa');
-        alert('Autenticación exitosa');
-        this.errorMessage = ''; // Limpiar mensaje de error en caso de éxito
-      } else {
-        this.errorMessage = 'Contraseña incorrecta';
-      }
+    if (user) {
+      console.log('Autenticación exitosa');
+      alert('Autenticación exitosa');
+      this.errorMessage = ''; // Limpiar mensaje de error en caso de éxito
+      this.router.navigate(['/apps/home']);  // Navega a la página de inicio
     } else {
-      this.errorMessage = 'Usuario no registrado, intentelo nuevamente';
+      this.errorMessage = 'Número de empleado o contraseña incorrecta';
     }
   }
 
@@ -47,7 +42,6 @@ export class LoginComponent {
   }
 
   onRegister(): void {
-    alert('Registrar botón clicado');
-    // Aquí puedes añadir la lógica de registro
+    this.router.navigate(['/auth/register']);  // Navega a la página de registro
   }
 }
