@@ -50,7 +50,7 @@ html, body {
     display: flex;
     flex-direction: column; /* Disponer los botones en una columna */
     gap: 10px; /* Añadir espacio entre los botones */
-    margin-top: 20px;
+    margin-top: 50px;
   }
   
   button {
