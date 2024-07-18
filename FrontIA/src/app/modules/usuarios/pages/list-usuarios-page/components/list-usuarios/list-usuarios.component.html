@@ -1,0 +1,48 @@
+<main class="page-list">
+    <section class="container-bg mt-2">
+        <table class="table mt-2">
+            <thead class="table-header table-thead-border">
+                <tr class="text-center">
+                    <th scope="col" class="col-num"># Empleado</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Rol</th>
+                    <th scope="col" class="col-actions">Acciones</th>
+                </tr>
+            </thead>
+            <tbody class="table-body align-middle">
+                <tr *ngFor="let user of users; let i = index; trackBy: trackByFn"
+                    [ngClass]="{'deleting': isDeletingUser && user.usernumber === idToDelete}">
+                    <td class="text-center">{{ user.usernumber }}</td>
+                    <td>{{ user.username }}</td>
+                    <td class="text-center">{{ user.rol }}</td>
+                    
+                    <td class="text-nowrap text-center">
+                        <a (click)="onEdit(user.usernumber)"
+                            class="c-pointer mx-1">
+                            <span class="material-icons icon-edit">edit</span>
+                        </a>
+                        <a  (click)="onSetTextModal(user)" 
+                            data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+                            class="c-pointer mx-1">
+                            <span class="material-icons icon-del">delete</span>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+    <div class="mt-auto mb-3">
+        <paginator
+            [totalItems]="totalItems"
+            (pageChanged)="onPageChange($event)"/>
+    </div>
+</main>
+
+
+<modal-confirmation 
+    modalTitle="¿Eliminar aplicación?"
+    [modalBodyText]="modalBodyText"
+    modalCloseBtnText="No, regresar"
+    modalConfirmBtnText="Si, eliminar"
+    (onModalAction)="onModalAction($event)"
+/>

@@ -1,0 +1,13 @@
+.icon-pos{
+    vertical-align: middle;
+}
+
+.icon-down{
+    font-size: 30px;
+    color: #7ED957;
+    transition: background-color 0.2s ease;
+}
+
+.icon-down:hover{
+    color: #008000;
+}

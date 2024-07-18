@@ -1,0 +1,37 @@
+.col-num{
+    width: 12%;
+}
+
+.icon-edit{
+    color: #5271FF;
+}
+
+.icon-edit:hover{
+    color: #3459ff;
+}
+
+.icon-del{
+    color: #FF5757;
+}
+
+.icon-del:hover{
+    color: #fa2f2f;
+}
+
+.page-list{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+.deleting{
+    opacity: 0.5;
+    cursor: progress;
+    background-color: red;
+}
+
+.deleting a{
+    pointer-events: none;
+}

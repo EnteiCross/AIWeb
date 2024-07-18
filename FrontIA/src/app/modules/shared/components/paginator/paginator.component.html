@@ -1,0 +1,17 @@
+<nav class="mt-2 d-flex justify-content-center ">
+    <ul class="pagination my-2">
+        <li class="page-item" [class.disabled]="currentPage === 1">
+            <a class="btn-paginator" (click)="navigatePage(currentPage - 1)">
+                &lt;
+            </a>
+        </li>
+        <li class="page-item" *ngFor="let num of pageNumbers" [class.disabled]="num === '...'" [class.active]="num === currentPage">
+            <a class="btn-paginator btn-num" (click)="navigatePage(num)">{{ num }}</a>
+        </li>
+        <li class="page-item" [class.disabled]="currentPage === totalPages">
+            <a class="btn-paginator" (click)="navigatePage(currentPage + 1)">
+                &gt;
+            </a>
+        </li>
+    </ul>
+</nav>

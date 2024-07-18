@@ -1,0 +1,23 @@
+.icon-pos{
+    vertical-align: middle;
+}
+
+.btn-new{
+    background-color: #a6a6a6;
+    color: #fff;
+    border-radius: 30px;
+    transition: background-color 0.2s ease;
+}
+
+.btn-new:hover{
+    background-color: #868686;
+}
+
+.btn-new span{
+    font-size: 36px;
+    color: #5271FF;
+}
+
+.btn-new:hover span{
+    color: blue;
+}

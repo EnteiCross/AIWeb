@@ -1,0 +1,22 @@
+<main class="layout">
+    <nav class="sidebar">
+      <ul>
+        <li *ngFor="let option of menuSidebar">
+          <a routerLinkActive="active"
+            [routerLink]="option.path" >
+              {{ option.name | titlecase }}
+          </a>
+        </li>
+      </ul>
+      <div class="logout-button ">
+        <button (click)="onLogout()">
+          <span class="material-icons me-1 icon-pos">power_settings_new</span>
+          Cerrar sesión
+        </button>
+      </div>
+    </nav>
+    <section class="content">
+      <router-outlet></router-outlet>
+    </section>
+</main>
+  
