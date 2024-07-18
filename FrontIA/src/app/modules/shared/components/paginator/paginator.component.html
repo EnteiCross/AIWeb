@@ -1,0 +1,17 @@
+<nav class="mt-4 d-flex justify-content-center ">
+    <ul class="pagination my-2">
+        <li class="page-item text-center" [class.disabled]="currentPage === 1">
+            <a class="page-link d-flex text-end" (click)="navigatePage(currentPage - 1)">
+                <span class="material-icons mx-0 icon-pos">arrow_back_ios</span>
+            </a>
+        </li>
+        <li class="page-item" *ngFor="let num of pageNumbers" [class.disabled]="num === '...'" [class.active]="num === currentPage">
+            <a class="page-link" (click)="navigatePage(num)">{{ num }}</a>
+        </li>
+        <li class="page-item" [class.disabled]="currentPage === totalPages">
+            <a class="page-link d-flex text-start" (click)="navigatePage(currentPage + 1)">
+                <span class="material-icons m-0 icon-pos">arrow_forward_ios</span>
+            </a>
+        </li>
+    </ul>
+</nav>
