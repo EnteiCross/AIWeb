@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
-import { delay, Observable, of } from 'rxjs';
-import { Aplication, GetAplicacionesResponse } from '../interfaces/aplicaciones.interfaces';
+import { Observable, of } from 'rxjs';
+import { GetAplicacionesResponse } from '../interfaces/aplicaciones.interfaces';
+import { UserLogged } from '../interfaces/auth.interfaces';
+
 
 @Injectable({
   providedIn: 'root'
@@ -8,77 +10,89 @@ import { Aplication, GetAplicacionesResponse } from '../interfaces/aplicaciones.
 export class AplicacionService {
 
   private data: GetAplicacionesResponse = {
-
     data: [
       {
         id:   1,
         name: 'Intranet-botonera',
-        status: 'En Proceso'
+        user: 'Luis',
+        status: 2
       },
       {
         id:   2,
         name: 'Web App simple',
-        status: 'Finalizado',
+        status: 1,
+        user: 'Angel',
         linkDownload:  'assets/images/portada.jpeg'
       },
       {
         id:   3,
         name: 'SI.exe',
-        status: 'Finalizado',
+        status: 3,
+        user: 'Ilse',
         linkDownload:  'assets/images/portada.jpeg'
       },
       {
         id:   4,
         name: 'Intranet-huellas',
-        status: 'En Proceso'
+        user: 'Brandon',
+        status: 4
       },
       {
         id:   5,
         name: 'Aplicacion prueba 2',
-        status: 'En Proceso'
+        user: 'Luis',
+        status: 1
       },
       {
         id:   6,
         name: '6Intranet-botonera',
-        status: 'En Proceso'
+        user: 'Luis',
+        status: 2
       },
       {
         id:   7,
         name: '7Web App simple',
-        status: 'Finalizado',
+        user: 'Angel',
+        status: 1,
         linkDownload:  'assets/images/portada.jpeg'
       },
       {
         id:   8,
         name: '8SI.exe',
-        status: 'Finalizado',
+        status: 2,
+        user: 'Otro',
         linkDownload:  'assets/images/portada.jpeg'
       },
       {
         id:   9,
         name: '9Intranet-huellas',
-        status: 'En Proceso'
+        user: 'Otro',
+        status: 3
       },
       {
         id:   10,
         name: '10Aplicacion prueba 2',
-        status: 'En Proceso'
+        user: 'Luis',
+        status: 2
       },
       {
         id:   11,
         name: '11SI.exe',
-        status: 'Finalizado',
+        user: 'Ilse',
+        status: 1,
         linkDownload:  'assets/images/portada.jpeg'
       },
       {
         id:   12,
         name: '12Intranet-huellas',
-        status: 'En Proceso'
+        user: 'Brandon',
+        status: 3
       },
       {
         id:   13,
         name: '13Aplicacion prueba 2',
-        status: 'En Proceso'
+        user: 'Brandon',
+        status: 4
       },
     ],
     total: 13
@@ -86,9 +100,14 @@ export class AplicacionService {
 
   constructor() { }
 
+  get userLogged(): UserLogged {
+    return {
+      rol: 'Invitado'
+    };
+  }
+
   getAplicaciones(page: number = 1): Observable<GetAplicacionesResponse> {
-    console.log(`Solicitud a pagine ${page}`);
-    const from = (page -1 ) * 5;
+    const from = ( page -1 ) * 5;
     const to = from + 5;
     const tmpData = this.data.data.slice(from,to);
     
@@ -98,14 +117,7 @@ export class AplicacionService {
     })
   }
 
-  deleteAplicacion(id: string): Observable<any>{    
-    // this.data = this.data.filter(app => `${app.id}` !== id)
-    
-    return of({
-      ok: true
-    }).pipe(
-      delay(2000)
-    )
-
+  setStatusAplicacion(id: number, newStatus: number){
+    console.log('Aqui hacer la llamada');    
   }
 }

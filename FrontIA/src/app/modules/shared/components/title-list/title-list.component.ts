@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { UserLogged } from '@modules/aplicaciones/interfaces/auth.interfaces';
 
 @Component({
   selector: 'title-list',
@@ -13,6 +14,7 @@ export class TitleListComponent {
 
   @Input() titleText: string = 'Insert title';
   @Input() btnLabel: string = 'label';
-  @Input() btnRoute: string = '/'
+  @Input() btnRoute: string = '/';
+  @Input() user!: UserLogged;
 
 }

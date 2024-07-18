@@ -1,62 +1,7 @@
 <title-list
     [titleText]="'Lista de Aplicaciones'"
     [btnLabel]="'Nueva'"
+    [user]="user"
     [btnRoute]="'/apps/new-app'"/>
 
-<ng-template #loader>
-    <div class="container d-flex justify-content-center mt-5">
-        <h3>Cargando ...</h3>
-    </div>
-</ng-template>
-
-
-<main *ngIf="!isLoadingData; else loader"  class="container">
-    <table class="table mt-2">
-        <thead class="table-bg">
-            <tr>
-                <th scope="col" class="text-center">ID</th>
-                <th scope="col" class="text-center">Nombre</th>
-                <th scope="col">Estatus</th>
-                <th scope="col" class="text-center col-actions">Acciones</th>
-            </tr>
-        </thead>
-        <tbody class="align-middle">
-            <tr *ngFor="let app of aplications; let i = index; trackBy: trackByFn"
-                [ngClass]="{'deleting': isDeleting && app.id === idToDelete}">
-                <td class="text-center">{{ app.id }}</td>
-                <td>{{ app.name }}</td>
-                <td>{{ app.status }}</td>
-                <td class="text-nowrap ">
-                    <a (click)="onEdit(app.id)"
-                        class="c-pointer mx-1">
-                       <span class="material-icons icon-pos">edit</span>
-                    </a>
-                    <a  
-                        (click)="onSetDelete(app.id,app.name)"
-                        data-bs-toggle="modal" data-bs-target="#staticBackdrop"
-                        class="c-pointer mx-1">
-                        <span class="material-icons icon-pos icon-del">delete</span>
-                    </a>
-                    <a 
-                        *ngIf="app.status === statusOpc.DONE"
-                        [href]="app.linkDownload"
-                        download="{{ app.name }}.jpeg"
-                        class="c-pointer mx-1">
-                        <span class="material-icons icon-pos icon-down">download</span>
-                    </a>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <paginator
-        [totalItems]="totalItems"
-        (pageChanged)="onPageChange($event)"/>
-</main>
-
-
-<modal-confirmation 
-    modalTitle="¿Eliminar aplicación?"
-    [modalBodyText]="modalBodyText"
-    modalCloseBtnText="No, regresar"
-    modalConfirmBtnText="Si, eliminar"
-    (onConfirm)="onDelete($event)"/>
+<list-apps/> 

@@ -14,11 +14,13 @@ export class ModalConfirmationComponent {
   @Input() modalCloseBtnText: string = 'Close';
   @Input() modalConfirmBtnText: string = 'Ok';
 
-  @Output() onConfirm = new EventEmitter<string>();
+  @Output() onModalAction = new EventEmitter<boolean>();
 
   onDelete(): void {
-    const values = this.modalBodyText.split('-');
-    this.onConfirm.emit(values[0].trim())
+    this.onModalAction.emit(true);
   }
 
+  onCancel(): void{
+    this.onModalAction.emit(false);    
+  }
 }

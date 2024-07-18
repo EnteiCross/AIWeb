@@ -1,0 +1,16 @@
+.table-bg tr > th{
+    /* background-color: #0d6efd; */
+    /* color: #fff; */
+}
+
+.col-actions{
+    width: 20%;
+}
+
+.icon-pos{
+    vertical-align: middle;
+}
+
+.icon-down{
+    color: green
+}
