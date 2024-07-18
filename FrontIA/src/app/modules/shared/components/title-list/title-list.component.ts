@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { UserLogged } from '@modules/aplicaciones/interfaces/auth.interfaces';
+import { UserLogged } from '@modules/auth/interfaces/userLogged.interface';
 
 @Component({
   selector: 'title-list',

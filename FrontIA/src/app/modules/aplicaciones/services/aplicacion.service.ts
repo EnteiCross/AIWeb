@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { GetAplicacionesResponse } from '../interfaces/aplicaciones.interfaces';
-import { UserLogged } from '../interfaces/auth.interfaces';
-
 
 @Injectable({
   providedIn: 'root'
@@ -99,12 +97,6 @@ export class AplicacionService {
   } as GetAplicacionesResponse
 
   constructor() { }
-
-  get userLogged(): UserLogged {
-    return {
-      rol: 'Invitado'
-    };
-  }
 
   getAplicaciones(page: number = 1): Observable<GetAplicacionesResponse> {
     const from = ( page -1 ) * 5;

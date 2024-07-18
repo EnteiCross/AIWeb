@@ -10,7 +10,7 @@ export const appsRoutes: Routes = [
         component: LayoutPageComponent,
         children: [
             { path: 'home', component: HomeAppsPageComponent },
-            { path: 'list', component: ListAppsPageComponent },
+            { path: 'list-apps', component: ListAppsPageComponent },
             { path: 'new-app', component: FormsAppsPageComponent },
             { path: 'edit/:id', component: FormsAppsPageComponent },
             { path: '**', redirectTo: 'home' }
