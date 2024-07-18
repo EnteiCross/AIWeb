@@ -6,6 +6,7 @@ import { AplicacionService } from '@modules/aplicaciones/services/aplicacion.ser
 import { UserLogged } from '@modules/aplicaciones/interfaces/auth.interfaces';
 import { ListAppsComponent } from "./components/list-apps/list-apps.component";
 
+
 @Component({
   selector: 'list-apps-page',
   standalone: true,

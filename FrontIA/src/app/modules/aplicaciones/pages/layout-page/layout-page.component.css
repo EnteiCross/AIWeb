@@ -1,0 +1,69 @@
+.layout {
+  display: flex;
+  height: 100vh;
+}
+
+.sidebar {
+  width: 200px;
+  background-color: #333;
+  color: white;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Asegura que el botón de cerrar sesión esté al final */
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebar li {
+  margin-bottom: 20px;
+}
+
+.sidebar a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  display: block;
+  padding: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.sidebar a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.logout-button {
+  margin-top: auto; /* Empuja el botón de cerrar sesión al final de la barra lateral */
+  text-align: center;
+}
+
+.logout-button button {
+  background-color: transparent;
+  border: none;
+  color: white;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.logout-button button img {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+.logout-button button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.content {
+  flex-grow: 1;
+  background-color: #f0f0f0;
+  padding: 20px;
+  font-size: 18px;
+}

@@ -1,16 +1,27 @@
-<div class="form-apps">
-    <h2>Nombre de la Aplicación</h2>
-    <input type="text" placeholder="Introduce el nombre de la aplicación" />
-  
-    <div class="button-container">
-      <input type="file" id="pdf-upload" accept="application/pdf" style="display: none;" (change)="onFileSelected($event, 'pdf')" />
-      <label for="pdf-upload" class="btn">Cargar PDF</label>
-  
-      <input type="file" id="zip-upload" accept=".zip" style="display: none;" (change)="onFileSelected($event, 'zip')" />
-      <label for="zip-upload" class="btn">Cargar ZIP</label>
-  
-      <button class="btn" (click)="onCancel()">Cancelar</button>
-      <button class="btn" (click)="onSave()">Guardar</button>
+<div class="form-container">
+  <div class="dark-box">
+    <p class="project-type-text">Tipo de Proyecto:</p>
+    <div class="image-buttons">
+      <button class="image-button" (click)="triggerFileInput('zip')">
+        <img src="assets/images/Cargar.png" alt="Button Image 1">
+      </button>
+      <input type="file" #zipInput accept=".zip" (change)="onFileSelected($event, 'zip')" style="display: none;">
+      <button class="image-button" (click)="showGitlabInput()">
+        <img src="assets/images/gitlab.webp" alt="Button Image 2">
+      </button>
     </div>
+    <div *ngIf="showGitlabUrlInput" class="gitlab-url-container">
+      <input type="text" [(ngModel)]="gitlabUrl" placeholder="Ingrese la URL de GitLab" class="gitlab-url-input">
+    </div>
+    <div *ngIf="zipFileName" class="project-info-container">
+      <span class="source-code-text">Código Fuente:</span>
+      <div class="project-info">
+        <span>{{ zipFileName }}</span>
+      </div>
+    </div>
+    <div class="action-buttons">
+      <button class="cancel-button" (click)="onCancel()">Cancelar</button>
+      <button class="accept-button" (click)="onSave()">Aceptar</button>
+    </div>
+  </div>
 </div>
-  
