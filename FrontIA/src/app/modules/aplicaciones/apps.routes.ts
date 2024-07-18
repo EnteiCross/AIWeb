@@ -6,10 +6,6 @@ import { FormsAppsPageComponent } from './pages/forms-apps-page/forms-apps-page.
 
 export const appsRoutes: Routes = [
     {
-        path: 'login', 
-        loadComponent: () => import('./pages/login/login.component').then(m => m.LoginComponent)
-    },
-    {
         path: '',
         component: LayoutPageComponent,
         children: [
