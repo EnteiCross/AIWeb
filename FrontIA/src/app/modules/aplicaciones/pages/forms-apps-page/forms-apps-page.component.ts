@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms'; // Importa FormsModule para ngMode
 export class FormsAppsPageComponent {
   @ViewChild('zipInput', { static: false }) zipInput!: ElementRef;
 
+  
   zipFile: File | null = null;
   zipFileName: string | null = null;
   gitlabUrl: string = '';
