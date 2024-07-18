@@ -16,5 +16,5 @@ export class TitleListComponent {
   @Input() btnLabel: string = 'label';
   @Input() btnRoute: string = '/';
   @Input() user!: UserLogged;
-
+  @Input() showBtn: boolean = true;
 }

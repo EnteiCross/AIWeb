@@ -10,3 +10,24 @@ body {
 .c-pointer{
     cursor: pointer;
 }
+
+.container-bg{
+    padding: 8px 0px 12px 0px;
+    background-color: #737373;
+}
+
+.table-body, .table-header{
+    background-color: #ccc;
+}
+
+tr > th, tr > td {
+    border: 2px solid #737373;
+}
+
+.table-thead-border {
+    border-bottom: 3px solid #737373;
+}
+
+.col-actions{
+    width: 20%;
+}

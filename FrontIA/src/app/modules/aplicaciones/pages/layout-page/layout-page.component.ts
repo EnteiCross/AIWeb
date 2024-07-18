@@ -27,7 +27,7 @@ export class LayoutPageComponent implements OnInit{
     this.userLogged = this.authService.userLogged;
     if(this.userLogged.rol === 'Administrador'){
       this.menuSidebar.push(
-        { path: '/apps/new-app', name: 'Usuarios'},
+        { path: '/apps/users/list-users', name: 'Usuarios'},
       )
     }
     
