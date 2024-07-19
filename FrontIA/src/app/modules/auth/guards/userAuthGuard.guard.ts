@@ -2,21 +2,16 @@ import { inject } from "@angular/core";
 import { Router } from "@angular/router";
 import { AuthService } from "@modules/auth/services/auth.service";
 
-export const AdminGuard = (): boolean => {
+export const UserAuthGuard = (): boolean => {
     const router = inject(Router);
     const authService = inject(AuthService);
 
     const currentUser = authService.userLogged;
-    console.log('admin');
     
-    if(!currentUser){
-        router.navigate(['/auth/login'])
+    if(currentUser === null){
+        return true;
     }
-
-    if (currentUser && currentUser.rol !== 'Administrador'){
-        router.navigate(['/apps/home'])
-        return false;
-    }
-
-    return true;
+    
+    router.navigate(['/apps/list'])
+    return false;
 }

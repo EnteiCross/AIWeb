@@ -31,6 +31,9 @@ export class LoginComponent {
       console.log('Autenticación exitosa');
       alert('Autenticación exitosa');
       this.errorMessage = ''; // Limpiar mensaje de error en caso de éxito
+      //Usar para el onLogin pasando numEmpleado y pasword validos 
+      // (Será un observable en su momento con BD)
+      this.authService.onLogin(trimmedUsernumber,trimmedPassword); 
       this.router.navigate(['/apps/home']);  // Navega a la página de inicio
     } else {
       this.errorMessage = 'Número de empleado o contraseña incorrecta';

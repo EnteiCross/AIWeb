@@ -3,6 +3,7 @@ import { TitleListComponent } from "../../../shared/components/title-list/title-
 import { ListUsuariosComponent } from "./components/list-usuarios/list-usuarios.component";
 import { AuthService } from '@modules/auth/services/auth.service';
 import { UserLogged } from '@modules/auth/interfaces/userLogged.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-list-usuarios-page',
@@ -12,11 +13,16 @@ import { UserLogged } from '@modules/auth/interfaces/userLogged.interface';
   styleUrl: './list-usuarios-page.component.css'
 })
 export class ListUsuariosPageComponent {
-  user!: UserLogged;
+  user!: UserLogged | null;
   
-  constructor(private authService: AuthService){}
+  constructor(
+    private router: Router,
+    private authService: AuthService){}
   
   ngOnInit(): void {
     this.user = this.authService.userLogged;
+    if(!this.user){
+      // this.router.navigate(['/auth/login'])
+    }
   }
 }

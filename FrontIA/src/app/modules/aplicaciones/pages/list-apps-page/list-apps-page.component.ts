@@ -16,7 +16,7 @@ import { UserLogged } from '@modules/auth/interfaces/userLogged.interface';
 })
 export class ListAppsPageComponent {
 
-  user!: UserLogged
+  user!: UserLogged | null;
   
   constructor(private authService: AuthService){}
   

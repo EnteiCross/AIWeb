@@ -5,6 +5,7 @@ import { HomeAppsPageComponent } from './pages/home-apps-page/home-apps-page.com
 import { FormsAppsPageComponent } from './pages/forms-apps-page/forms-apps-page.component';
 import { AdminGuard } from '@modules/usuarios/guards/adminGuard.guard';
 import { usuariosRoutes } from '@modules/usuarios/usuarios.routes';
+import { AplicacionesGuard } from './guards/aplicaciones.guard';
 
 export const appsRoutes: Routes = [
     {
@@ -13,8 +14,7 @@ export const appsRoutes: Routes = [
         children: [
             { path: 'home', component: HomeAppsPageComponent },
             { path: 'list-apps', component: ListAppsPageComponent },
-            { path: 'new-app', component: FormsAppsPageComponent },
-            { path: 'edit/:id', component: FormsAppsPageComponent },
+            { path: 'new-app', component: FormsAppsPageComponent, canActivate: [AplicacionesGuard] },
             {
                 path: 'users',
                 canActivate: [AdminGuard],
