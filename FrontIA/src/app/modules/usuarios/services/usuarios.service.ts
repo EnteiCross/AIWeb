@@ -39,6 +39,29 @@ export class UsuariosService {
     })
   }
 
+  getUserById(id: string): Observable<Usuario | undefined>{
+    const user = this.usuarios.data.filter(user => user.usernumber === id);
+    
+    if(user.length > 0){
+      return of(user[0])
+    }
+
+    return of(undefined)
+  }
+
+  updateUsuario(user: Usuario): Observable<any> {
+    
+    console.log(user);
+    
+
+    return of({
+      ok: true,
+      message: 'Se actualizo'
+    }).pipe(
+      delay(2000)
+    )
+  }
+
   deleteUsuario(id: string): Observable<any> {
     console.log('aqui se eliminara y esto regresara un observable')
 
