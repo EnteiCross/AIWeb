@@ -9,10 +9,10 @@ export class AuthService {
   constructor() { }
 
   get userLogged(): UserLogged {
-    // return { rol: 'Invitado'};
+    return { rol: 'Invitado'};
     // return { rol: 'Usuario'};
     // return { rol: 'Autorizador'};
-    return { rol: 'Administrador'};
+    // return { rol: 'Administrador'};
   }
 
   register(usernumber: string, username: string, password: string): Promise<void> {
