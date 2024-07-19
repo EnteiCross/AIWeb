@@ -12,15 +12,7 @@ export class AuthService {
   constructor() { }
 
   get userLogged(): UserLogged | null {
-    return  {  
-      username:   'Penta Cero Miedo',
-      usernumber: '99872123',
-      token:      'esteesuntokencomodequeno',
-      // rol:        'Invitado'
-      rol: 'Usuario',
-      // rol: 'Autorizador',
-      // rol: 'Administrador'
-    };
+    return  this.currentUser;
   }
 
   onLogin(user: string, password: string) {
