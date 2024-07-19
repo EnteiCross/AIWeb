@@ -56,7 +56,8 @@ export class UsuariosService {
 
     return of({
       ok: true,
-      message: 'Se actualizo'
+      message: 'Se actualizo',
+      user
     }).pipe(
       delay(2000)
     )

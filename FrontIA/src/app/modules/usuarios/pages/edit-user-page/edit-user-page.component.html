@@ -59,5 +59,9 @@
                 
         </button>
     </div>
-
 </section>
+
+<message-box
+    *ngIf="isShowMessage"
+    [message]="message"
+/>
