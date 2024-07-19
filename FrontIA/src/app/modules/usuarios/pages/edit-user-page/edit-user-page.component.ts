@@ -5,11 +5,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Role, Usuario } from '@modules/usuarios/interface/usuario.interface';
 import { UsuariosService } from '@modules/usuarios/services/usuarios.service';
 import { switchMap } from 'rxjs';
+import { MessageBoxComponent } from "../../../shared/components/message-box/message-box.component";
 
 @Component({
   selector: 'app-edit-user-page',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, MessageBoxComponent],
   templateUrl: './edit-user-page.component.html',
   styleUrl: './edit-user-page.component.css'
 })
@@ -18,6 +19,8 @@ export class EditUserPageComponent implements OnInit{
   userForm!:  FormGroup;
   initalValues: any;
   isLoading: boolean = false;
+  isShowMessage: boolean = false;
+  message: string = '';
 
   typesUsers = [
     { value: 'Invitado', name: 'Invitado' },
@@ -82,10 +85,12 @@ export class EditUserPageComponent implements OnInit{
     this.isLoading = true;
     const user = this.userForm.value;
     this.usuariosService.updateUsuario(user).subscribe(resp => {
-      this.isLoading = false;
       console.log(resp);
-      console.log('Mostrar alerta');
-      
+      this.isLoading = false;
+      this.isShowMessage = true;
+      this.message = `¡Se a modificado a ${ resp.user.username } como ${resp.user.rol} con éxito!`;
+      setTimeout(() => this.isShowMessage = false,5000)
+      this.initalValues = this.userForm.value;
     })
   }
 
