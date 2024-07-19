@@ -10,6 +10,7 @@ import { SelectListComponent } from "../select-list/select-list.component";
 import { StatusPipe } from '../../pipes/status.pipe';
 import { AuthService } from '@modules/auth/services/auth.service';
 import { UserLogged } from '@modules/auth/interfaces/userLogged.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'list-apps',
@@ -21,7 +22,7 @@ import { UserLogged } from '@modules/auth/interfaces/userLogged.interface';
 export class ListAppsComponent {
   @ViewChild('btnModal') btnModal!: ElementRef<HTMLAnchorElement>;
 
-  user!: UserLogged;
+  user!: UserLogged | null;
   aplications: Aplication[] = [];
   
   currentPage: number = 1;
@@ -36,11 +37,15 @@ export class ListAppsComponent {
   };
   
   constructor(
+      private router: Router,
       private aplicacionService: AplicacionService,
       private authService: AuthService ){}
 
   ngOnInit(): void {
     this.user = this.authService.userLogged;
+    if(!this.user){
+      // this.router.navigate(['/auth/login'])
+    }
     this.onGetAplicaciones();
   }
 

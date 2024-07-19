@@ -31,3 +31,7 @@ tr > th, tr > td {
 .col-actions{
     width: 20%;
 }
+
+.icon-hover:hover img {
+    filter: brightness(0.8);
+}

@@ -13,7 +13,7 @@ import { AuthService } from '@modules/auth/services/auth.service';
 })
 export class LayoutPageComponent implements OnInit{
 
-  userLogged!: UserLogged;
+  userLogged!: UserLogged | null;
   menuSidebar = [
     { path: '/apps/home', name: 'Inicio'},
     { path: '/apps/list-apps', name: 'Aplicaciones'},
@@ -25,17 +25,18 @@ export class LayoutPageComponent implements OnInit{
   
   ngOnInit(): void {
     this.userLogged = this.authService.userLogged;
-    if(this.userLogged.rol === 'Administrador'){
-      this.menuSidebar.push(
-        { path: '/apps/users/list-users', name: 'Usuarios'},
-      )
+    if(this.userLogged){
+      if(this.userLogged.rol === 'Administrador'){
+        this.menuSidebar.push(
+          { path: '/apps/users/list-users', name: 'Usuarios'},
+        )
+      }
     }
-    
   }
 
   
   onLogout():void {
-    //TODO: completar el logout
+    this.authService.onLogout();
     this.router.navigate(['/auth/login']);
   }
 }
